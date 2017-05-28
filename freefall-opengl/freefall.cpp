@@ -4,7 +4,7 @@
 #include<math.h>
 
 /* -- Variable declarations -- */
-int ch=0;   //choice for the menu
+int ch;   //choice for the menu
 int w=500, h=500;   //Width and height of the window
 
 
@@ -21,15 +21,13 @@ void myinit();
 
 
 
-void brick()	// displaying Brick
-{
-	glColor3f(0.501,0.18,0.121); //brick color
-	
+void brick() {	// displaying Brick
+    glColor3f(0.501,0.18,0.121); //brick color
 	glBegin(GL_POLYGON);   //front face
-	 glVertex2f(200,750);
-	 glVertex2f(200,800);
-	 glVertex2f(300,800);
-	 glVertex2f(300,750);
+		glVertex2f(200,750);
+		glVertex2f(200,800);
+		glVertex2f(300,800);
+		glVertex2f(300,750);
 	glEnd();
 	
 	glBegin(GL_POLYGON);	//top face
@@ -59,8 +57,7 @@ void brick()	// displaying Brick
 }
 
 
-void ground()	// displaying ground
-{
+void ground() {	// displaying ground
 	glColor3f(0.0,1.0,0.0);
 	glBegin(GL_LINES);
 		glVertex2f(100,190);
@@ -70,11 +67,10 @@ void ground()	// displaying ground
 } 
 
 
-void feather()	//displaying feather
-{
+void feather() {	//displaying feather
 	//glColor3f(0.176,0.43,0.21);	//Leaf
 	glColor3f(0.52,0.53,0.54);	//Feather
-	
+		
 	glBegin(GL_LINES);  // feather shaft
 		 glVertex2f(600,750);
 		 glVertex2f(605,758);
@@ -97,6 +93,7 @@ void feather()	//displaying feather
 		 glVertex2f(656,799); 
 		 glVertex2f(664,802.5);
 
+		  
 		 glVertex2f(605,758); //1
 		 glVertex2f(603,768);
 		 glVertex2f(605,758);
@@ -149,28 +146,25 @@ void feather()	//displaying feather
 }
 
 
-void prTNR24(int n,char s[],int x,int y)	//displaying text in Times new roman 24 size
-{
-  int k;
-  glRasterPos2i(x,y);
-  for(k=0;k<n;k++)
-  glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,s[k]);
-  glColor3f(1,1,1);
+void prTNR24(int n,char s[],int x,int y) {	//displaying text in Times new roman 24 size
+	int k;
+	glRasterPos2i(x,y);
+	for(k=0;k<n;k++)
+	glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,s[k]);
+	glColor3f(1,1,1);
 }
 
 
-void prTNR10(int n,char s[],int x,int y)	//displaying text in Times new roman 10 size
-{
-  int k;
-  glRasterPos2i(x,y);
-  for(k=0;k<n;k++)
-  glutBitmapCharacter(GLUT_BITMAP_9_BY_15,s[k]);
-  glColor3f(1,1,1);
+void prTNR10(int n,char s[],int x,int y) {	//displaying text in Times new roman 10 size
+	int k;
+	glRasterPos2i(x,y);
+	for(k=0;k<n;k++)
+	glutBitmapCharacter(GLUT_BITMAP_9_BY_15,s[k]);
+	glColor3f(1,1,1);
 }
 
 
-void display()
-{
+void display() {
 	int k;
 	char free[24]="FREE FALL DEMONSTRATION";
 	char cg[40]="Computer Graphics Project";
@@ -188,20 +182,29 @@ void display()
 	prTNR10(22,pra,800,200);
 	prTNR10(11,pusn,800,150);
 	
-	if(ch==2)
-	{ 
+	if(ch==1) {
+		glClear(GL_COLOR_BUFFER_BIT);
+
+	}
+
+	if(ch==2) {
 		glClear(GL_COLOR_BUFFER_BIT);
 		brick();
 		ground();
 		feather();
 	}
 
+	if(ch==3) {
+		glClear(GL_COLOR_BUFFER_BIT);
+		brick();
+		ground();
+		feather();
+	}
 	glFlush();
 }
 
 
-void myReshape(int w, int h)
-{
+void myReshape(int w, int h) {
 	if(w>=h)
 		glViewport(0,0,(GLsizei)h, (GLsizei)h);
 	else
@@ -209,16 +212,16 @@ void myReshape(int w, int h)
 }
 
 
-void menu(int choice)
-{
-	switch(choice)
-	{
-		case 1: 
+void menu(int choice) {
+	switch(choice) {
+		case 1:
+			ch=1;
 			break;
 		case 2: 
 			ch=2;
 			break;
 		case 3:
+			ch=3;
 			break;
 		case 4: 
 			exit(0);
@@ -228,8 +231,7 @@ void menu(int choice)
 }
 
 
-void myinit()
-{
+void myinit() {
 	glutCreateMenu(menu);
 	glutAddMenuEntry("Introduction",1);
 	glutAddMenuEntry("With Air",2);
@@ -245,8 +247,7 @@ void myinit()
 }
 
 
-void main(int argc, char **argv)
-{
+void main(int argc, char **argv) {
 	glutInit(&argc,argv);
 	glutInitDisplayMode(GLUT_SINGLE|GLUT_RGB);
 	glutInitWindowSize(w,h);
