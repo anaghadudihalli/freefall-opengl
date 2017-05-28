@@ -2,24 +2,44 @@
 #include<stdlib.h>
 #include<GL/glut.h>
 #include<math.h>
-int ch=0;
-void brick()
+
+/* -- Variable declarations -- */
+int ch=0;   //choice for the menu
+int w=500, h=500;   //Width and height of the window
+
+
+/* -- Function declarations -- */
+void brick();   // displaying Brick
+void ground();   // displaying ground
+void feather();  //displaying feather
+void prTNR24(int n,char s[],int x,int y);   //displaying text in Times new roman 24 size
+void prTNR10(int n,char s[],int x,int y);	//displaying text in Times new roman 10 size
+void display();
+void myReshape(int w, int h);
+void menu(int choice);
+void myinit();
+
+
+
+void brick()	// displaying Brick
 {
-	glColor3f(0.501,0.18,0.121);
-	glBegin(GL_POLYGON);
+	glColor3f(0.501,0.18,0.121); //brick color
+	
+	glBegin(GL_POLYGON);   //front face
 	 glVertex2f(200,750);
 	 glVertex2f(200,800);
 	 glVertex2f(300,800);
 	 glVertex2f(300,750);
 	glEnd();
-	glBegin(GL_POLYGON);
+	
+	glBegin(GL_POLYGON);	//top face
 		glVertex2f(200,800);
 		glVertex2f(233.3,825);
 		glVertex2f(333.3,825);
 		glVertex2f(300,800);
 	glEnd();
 
-	glBegin(GL_POLYGON);
+	glBegin(GL_POLYGON);	//side face
 		glVertex2f(300,800);
 		glVertex2f(333.3,825);
 		glVertex2f(333.3,775);
@@ -27,8 +47,7 @@ void brick()
 	glEnd();
 
 	glColor3f(0.0,0.0,0.0);
-	
-	glBegin(GL_LINES);
+	glBegin(GL_LINES);	//brick outline
 		glVertex2f(200,800);
 		glVertex2f(300,800);
 		glVertex2f(300,800);
@@ -36,98 +55,101 @@ void brick()
 		glVertex2f(300,800);
 		glVertex2f(300,750);
 	glEnd();
-
 	glFlush();
 }
 
-void ground()
+
+void ground()	// displaying ground
 {
 	glColor3f(0.0,1.0,0.0);
 	glBegin(GL_LINES);
-	 glVertex2f(100,190);
-	 glVertex2f(810,190);
-	 glEnd();
-	 glFlush();
+		glVertex2f(100,190);
+		glVertex2f(810,190);
+	glEnd();
+	glFlush();
 } 
 
-void feather()
+
+void feather()	//displaying feather
 {
-	//main feather line
-	//glColor3f(0.176,0.43,0.21); //Leaf
-	glColor3f(0.52,0.53,0.54); //Feather
-	glBegin(GL_LINES);
-	 glVertex2f(600,750);
-	 glVertex2f(605,758);
-	 glVertex2f(605,758);
-	 glVertex2f(610,765);
-	 glVertex2f(610,765);
-	 glVertex2f(616,771);
-	 glVertex2f(616,771);
-	 glVertex2f(623,777);
-	 glVertex2f(623,777);
-	 glVertex2f(629,782);
-	 glVertex2f(629,782);
-	 glVertex2f(635,787);
-	 glVertex2f(635,787);
-	 glVertex2f(643,792);
-	 glVertex2f(643,792);
-	 glVertex2f(649,796);
-	 glVertex2f(649,796);
-	 glVertex2f(656,799);
-	 glVertex2f(656,799); 
-     glVertex2f(664,802.5);
+	//glColor3f(0.176,0.43,0.21);	//Leaf
+	glColor3f(0.52,0.53,0.54);	//Feather
+	
+	glBegin(GL_LINES);  // feather shaft
+		 glVertex2f(600,750);
+		 glVertex2f(605,758);
+		 glVertex2f(605,758);
+		 glVertex2f(610,765);
+		 glVertex2f(610,765);
+		 glVertex2f(616,771);
+		 glVertex2f(616,771);
+		 glVertex2f(623,777);
+		 glVertex2f(623,777);
+		 glVertex2f(629,782);
+		 glVertex2f(629,782);
+		 glVertex2f(635,787);
+		 glVertex2f(635,787);
+		 glVertex2f(643,792);
+		 glVertex2f(643,792);
+		 glVertex2f(649,796);
+		 glVertex2f(649,796);
+		 glVertex2f(656,799);
+		 glVertex2f(656,799); 
+		 glVertex2f(664,802.5);
 
-	 glVertex2f(605,758); //1
-	 glVertex2f(603,768);
-     glVertex2f(605,758);
-	 glVertex2f(621,762);
+		 glVertex2f(605,758); //1
+		 glVertex2f(603,768);
+		 glVertex2f(605,758);
+		 glVertex2f(621,762);
 	 
-	 glVertex2f(610,765);//2
-	 glVertex2f(611,775);
-	 glVertex2f(610,765);
-	 glVertex2f(629,768);
+		 glVertex2f(610,765); //2
+		 glVertex2f(611,775);
+		 glVertex2f(610,765);
+		 glVertex2f(629,768);
 
-	 glVertex2f(616,771); //3
-	 glVertex2f(617,782.5);
-	 glVertex2f(616,771);
-	 glVertex2f(636,775.5);
+		 glVertex2f(616,771); //3
+		 glVertex2f(617,782.5);
+		 glVertex2f(616,771);
+		 glVertex2f(636,775.5);
 	 
 	 
-	 glVertex2f(623,777); //4
-	 glVertex2f(625,787);
-	 glVertex2f(623,777);
-	 glVertex2f(643,784);
+		 glVertex2f(623,777); //4
+		 glVertex2f(625,787);
+		 glVertex2f(623,777);
+		 glVertex2f(643,784);
 
 
-	 glVertex2f(629,782); //5
-	 glVertex2f(631,794);
-	 glVertex2f(629,782);
-	 glVertex2f(643,787);
+		 glVertex2f(629,782); //5
+		 glVertex2f(631,794);
+		 glVertex2f(629,782);
+		 glVertex2f(643,787);
 
-	 glVertex2f(635,787); //6
-	 glVertex2f(639,795.5);
-	 glVertex2f(635,787);
-	 glVertex2f(649,794);
+		 glVertex2f(635,787); //6
+		 glVertex2f(639,795.5);
+		 glVertex2f(635,787);
+		 glVertex2f(649,794);
 
-	 glVertex2f(643,792); //7
-	 glVertex2f(647,801);
-	 glVertex2f(643,792);
-	 glVertex2f(656,794);
+		 glVertex2f(643,792); //7
+		 glVertex2f(647,801);
+		 glVertex2f(643,792);
+		 glVertex2f(656,794);
 
-	 glVertex2f(649,796); //8
-	 glVertex2f(655,805);
-	 glVertex2f(649,796);
-	 glVertex2f(663,798);
+		 glVertex2f(649,796); //8
+		 glVertex2f(655,805);
+		 glVertex2f(649,796);
+		 glVertex2f(663,798);
 	 
-	 glVertex2f(656,799); //9
-	 glVertex2f(663,806);
-	 glVertex2f(656,799);
-	 glVertex2f(666,805);
+		 glVertex2f(656,799); //9
+		 glVertex2f(663,806);
+		 glVertex2f(656,799);
+		 glVertex2f(666,805);
 
 	glEnd();
 	glFlush();
 }
-void prTNR24(int n,char s[],int x,int y)
+
+
+void prTNR24(int n,char s[],int x,int y)	//displaying text in Times new roman 24 size
 {
   int k;
   glRasterPos2i(x,y);
@@ -135,7 +157,9 @@ void prTNR24(int n,char s[],int x,int y)
   glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,s[k]);
   glColor3f(1,1,1);
 }
-void prTNR10(int n,char s[],int x,int y)
+
+
+void prTNR10(int n,char s[],int x,int y)	//displaying text in Times new roman 10 size
 {
   int k;
   glRasterPos2i(x,y);
@@ -143,6 +167,8 @@ void prTNR10(int n,char s[],int x,int y)
   glutBitmapCharacter(GLUT_BITMAP_9_BY_15,s[k]);
   glColor3f(1,1,1);
 }
+
+
 void display()
 {
 	int k;
@@ -164,14 +190,15 @@ void display()
 	
 	if(ch==2)
 	{ 
-	 glClear(GL_COLOR_BUFFER_BIT);
-     brick();
-	 ground();
-	 feather();
+		glClear(GL_COLOR_BUFFER_BIT);
+		brick();
+		ground();
+		feather();
 	}
 
 	glFlush();
 }
+
 
 void myReshape(int w, int h)
 {
@@ -180,21 +207,27 @@ void myReshape(int w, int h)
 	else
 		glViewport(0,0,(GLsizei)w, (GLsizei)w);
 }
+
+
 void menu(int choice)
 {
 	switch(choice)
 	{
-	case 1: 
-		break;
-	case 2: ch=2;
-		break;
-	case 3:
-		break;
-	case 4: exit(0);
-		break;
-	}
+		case 1: 
+			break;
+		case 2: 
+			ch=2;
+			break;
+		case 3:
+			break;
+		case 4: 
+			exit(0);
+			break;
+	}	
 	glutPostRedisplay();
 }
+
+
 void myinit()
 {
 	glutCreateMenu(menu);
@@ -211,11 +244,12 @@ void myinit()
 	gluOrtho2D(0.0,1000.0,0.0,1000.0);
 }
 
+
 void main(int argc, char **argv)
 {
 	glutInit(&argc,argv);
 	glutInitDisplayMode(GLUT_SINGLE|GLUT_RGB);
-	glutInitWindowSize(500,500);
+	glutInitWindowSize(w,h);
 	glutInitWindowPosition(0,0);
 	glutCreateWindow("Free Fall");
 	myinit();
