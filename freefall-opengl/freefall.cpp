@@ -5,7 +5,7 @@
 
 /* -- Variable declarations -- */
 int ch;   //choice for the menu
-int w=500, h=500;   //Width and height of the window
+int w=600, h=600;   //Width and height of the window
 
 
 /* -- Function declarations -- */
@@ -21,7 +21,8 @@ void myinit();
 
 
 
-void brick() {	// displaying Brick
+// displaying Brick
+void brick() {	
     glColor3f(0.501,0.18,0.121); //brick color
 	glBegin(GL_POLYGON);   //front face
 		glVertex2f(200,750);
@@ -67,7 +68,8 @@ void ground() {	// displaying ground
 } 
 
 
-void feather() {	//displaying feather
+//displaying feather
+void feather() {	
 	//glColor3f(0.176,0.43,0.21);	//Leaf
 	glColor3f(0.52,0.53,0.54);	//Feather
 		
@@ -146,7 +148,8 @@ void feather() {	//displaying feather
 }
 
 
-void prTNR24(int n,char s[],int x,int y) {	//displaying text in Times new roman 24 size
+//displaying text in Times new roman 24 size
+void prTNR24(int n,char s[],int x,int y) {	
 	int k;
 	glRasterPos2i(x,y);
 	for(k=0;k<n;k++)
@@ -155,7 +158,8 @@ void prTNR24(int n,char s[],int x,int y) {	//displaying text in Times new roman 
 }
 
 
-void prTNR10(int n,char s[],int x,int y) {	//displaying text in Times new roman 10 size
+//displaying text in Times new roman 10 size
+void prTNR10(int n,char s[],int x,int y) {	
 	int k;
 	glRasterPos2i(x,y);
 	for(k=0;k<n;k++)
@@ -165,7 +169,6 @@ void prTNR10(int n,char s[],int x,int y) {	//displaying text in Times new roman 
 
 
 void display() {
-	int k;
 	char free[24]="FREE FALL DEMONSTRATION";
 	char cg[40]="Computer Graphics Project";
 	char by[3] ="by";
@@ -182,9 +185,18 @@ void display() {
 	prTNR10(22,pra,800,200);
 	prTNR10(11,pusn,800,150);
 	
+
 	if(ch==1) {
 		glClear(GL_COLOR_BUFFER_BIT);
-
+		char l1[138]="In fourth-century BC Greece the philosopher Aristotle theorized that the speed at which an object falls is probably relative to its mass.";
+		char l2[141]="In other words, if two objects are the same size but one is heavier, the heavier one has greater density than the lighter object. Therefore,";
+		char l3[138]="when both objects are dropped from the same height and at the same time, the heavier object should hit the ground before the lighter one.";
+		char l4[14]="Is this true?";
+		prTNR10(138,l1,100,800);
+		prTNR10(141,l2,100,775);
+		prTNR10(138,l3,100,750);
+		prTNR10(14,l4,100,725);
+		glFlush();
 	}
 
 	if(ch==2) {
