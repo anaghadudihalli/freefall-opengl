@@ -272,7 +272,7 @@ void myinit() {
 	glutCreateMenu(menu);
 	glutAddMenuEntry("Start Screen",1);
 	glutAddMenuEntry("Introduction",2);
-	glutAddMenuEntry("With Air",3);
+	glutAddMenuEntry("With Air Resistance",3);
 	glutAddMenuEntry("In Vacuum",4);
 	glutAddMenuEntry("Exit",5);
 	glutAttachMenu(GLUT_RIGHT_BUTTON);
