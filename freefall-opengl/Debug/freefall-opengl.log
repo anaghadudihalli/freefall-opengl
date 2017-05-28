@@ -1,11 +1,11 @@
-﻿Build started 28/05/2017 11:34:12 PM.
+﻿Build started 29/05/2017 12:03:07 AM.
      1>Project "C:\Users\SYS\Desktop\freefall-opengl\freefall-opengl\freefall-opengl.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
-         Touching "Debug\freefall-opengl.unsuccessfulbuild".
+         Creating "Debug\freefall-opengl.unsuccessfulbuild" because "AlwaysCreate" was specified.
        ClCompile:
          C:\Program Files\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt freefall.cpp
          freefall.cpp
-     1>c:\users\sys\desktop\freefall-opengl\freefall-opengl\freefall.cpp(125): warning C4101: 'k' : unreferenced local variable
+     1>c:\users\sys\desktop\freefall-opengl\freefall-opengl\freefall.cpp(148): warning C4101: 'k' : unreferenced local variable
        Link:
          C:\Program Files\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\SYS\Desktop\freefall-opengl\Debug\freefall-opengl.exe" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\freefall-opengl.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\SYS\Desktop\freefall-opengl\Debug\freefall-opengl.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\SYS\Desktop\freefall-opengl\Debug\freefall-opengl.lib" /MACHINE:X86 Debug\freefall.obj
          LINK : C:\Users\SYS\Desktop\freefall-opengl\Debug\freefall-opengl.exe not found or not built by the last incremental link; performing full link
@@ -19,4 +19,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.59
+Time Elapsed 00:00:00.88

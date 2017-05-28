@@ -53,7 +53,8 @@ void ground()
 void feather()
 {
 	//main feather line
-	glColor3f(1.0,1.0,1.0);
+	//glColor3f(0.176,0.43,0.21); //Leaf
+	glColor3f(0.52,0.53,0.54); //Feather
 	glBegin(GL_LINES);
 	 glVertex2f(600,750);
 	 glVertex2f(605,758);
@@ -76,30 +77,52 @@ void feather()
 	 glVertex2f(656,799); 
      glVertex2f(664,802.5);
 
-	 glVertex2f(605,758);
+	 glVertex2f(605,758); //1
 	 glVertex2f(603,768);
      glVertex2f(605,758);
 	 glVertex2f(621,762);
 	 
-	 glVertex2f(610,765);
-	 glVertex2f(611,774);
+	 glVertex2f(610,765);//2
+	 glVertex2f(611,775);
 	 glVertex2f(610,765);
 	 glVertex2f(629,768);
 
+	 glVertex2f(616,771); //3
+	 glVertex2f(617,782.5);
 	 glVertex2f(616,771);
+	 glVertex2f(636,775.5);
+	 
+	 
+	 glVertex2f(623,777); //4
+	 glVertex2f(625,787);
 	 glVertex2f(623,777);
-	 glVertex2f(623,777);
+	 glVertex2f(643,784);
+
+
+	 glVertex2f(629,782); //5
+	 glVertex2f(631,794);
 	 glVertex2f(629,782);
-	 glVertex2f(629,782);
+	 glVertex2f(643,787);
+
+	 glVertex2f(635,787); //6
+	 glVertex2f(639,795.5);
 	 glVertex2f(635,787);
-	 glVertex2f(635,787);
+	 glVertex2f(649,794);
+
+	 glVertex2f(643,792); //7
+	 glVertex2f(647,801);
 	 glVertex2f(643,792);
-	 glVertex2f(643,792);
+	 glVertex2f(656,794);
+
+	 glVertex2f(649,796); //8
+	 glVertex2f(655,805);
 	 glVertex2f(649,796);
-	 glVertex2f(649,796);
+	 glVertex2f(663,798);
+	 
+	 glVertex2f(656,799); //9
+	 glVertex2f(663,806);
 	 glVertex2f(656,799);
-	 glVertex2f(656,799); 
-     glVertex2f(664,802.5);
+	 glVertex2f(666,805);
 
 	glEnd();
 	glFlush();
