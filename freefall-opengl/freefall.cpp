@@ -5,15 +5,38 @@
 int ch=0;
 void brick()
 {
-	glColor3f(1.0,0.0,0.0);
+	glColor3f(0.501,0.18,0.121);
 	glBegin(GL_POLYGON);
 	 glVertex2f(200,750);
 	 glVertex2f(200,800);
 	 glVertex2f(300,800);
 	 glVertex2f(300,750);
 	glEnd();
+	glBegin(GL_POLYGON);
+		glVertex2f(200,800);
+		glVertex2f(233.3,825);
+		glVertex2f(333.3,825);
+		glVertex2f(300,800);
+	glEnd();
 
 	glBegin(GL_POLYGON);
+		glVertex2f(300,800);
+		glVertex2f(333.3,825);
+		glVertex2f(333.3,775);
+		glVertex2f(300,750);
+	glEnd();
+
+	glColor3f(0.0,0.0,0.0);
+	
+	glBegin(GL_LINES);
+		glVertex2f(200,800);
+		glVertex2f(300,800);
+		glVertex2f(300,800);
+		glVertex2f(333.3,825);
+		glVertex2f(300,800);
+		glVertex2f(300,750);
+	glEnd();
+
 	glFlush();
 }
 
@@ -21,7 +44,7 @@ void ground()
 {
 	glColor3f(0.0,1.0,0.0);
 	glBegin(GL_LINES);
-	 glVertex2f(190,190);
+	 glVertex2f(100,190);
 	 glVertex2f(810,190);
 	 glEnd();
 	 glFlush();
@@ -33,26 +56,51 @@ void feather()
 	glColor3f(1.0,1.0,1.0);
 	glBegin(GL_LINES);
 	 glVertex2f(600,750);
-	 glVertex2f(606,763);
-	 glVertex2f(606,763);
-	 glVertex2f(611,769);
-	 glVertex2f(611,769);
-	 glVertex2f(616,774);
-	 glVertex2f(616,774);
-	 glVertex2f(623,779);
-	 glVertex2f(623,779);
-	 glVertex2f(629,783.5);
-	 glVertex2f(629,783.5);
-	 glVertex2f(636,789);
-	 glVertex2f(636,789);
-	 glVertex2f(642,792);
-	 glVertex2f(642,792);
-	 glVertex2f(647,795);
-	 glVertex2f(647,795);
-	 glVertex2f(653,798); 
-     glVertex2f(606,763);
-	 glVertex2f(604,772.5);
-	 glVertex2f(625,766);
+	 glVertex2f(605,758);
+	 glVertex2f(605,758);
+	 glVertex2f(610,765);
+	 glVertex2f(610,765);
+	 glVertex2f(616,771);
+	 glVertex2f(616,771);
+	 glVertex2f(623,777);
+	 glVertex2f(623,777);
+	 glVertex2f(629,782);
+	 glVertex2f(629,782);
+	 glVertex2f(635,787);
+	 glVertex2f(635,787);
+	 glVertex2f(643,792);
+	 glVertex2f(643,792);
+	 glVertex2f(649,796);
+	 glVertex2f(649,796);
+	 glVertex2f(656,799);
+	 glVertex2f(656,799); 
+     glVertex2f(664,802.5);
+
+	 glVertex2f(605,758);
+	 glVertex2f(603,768);
+     glVertex2f(605,758);
+	 glVertex2f(621,762);
+	 
+	 glVertex2f(610,765);
+	 glVertex2f(611,774);
+	 glVertex2f(610,765);
+	 glVertex2f(629,768);
+
+	 glVertex2f(616,771);
+	 glVertex2f(623,777);
+	 glVertex2f(623,777);
+	 glVertex2f(629,782);
+	 glVertex2f(629,782);
+	 glVertex2f(635,787);
+	 glVertex2f(635,787);
+	 glVertex2f(643,792);
+	 glVertex2f(643,792);
+	 glVertex2f(649,796);
+	 glVertex2f(649,796);
+	 glVertex2f(656,799);
+	 glVertex2f(656,799); 
+     glVertex2f(664,802.5);
+
 	glEnd();
 	glFlush();
 }
@@ -85,7 +133,7 @@ void display()
 
 	prTNR24(24,free,360,900);
 	prTNR10(40,cg,400,600);
-	prTNR10(3,by,480,500);
+	prTNR10(3,by,470,550);
     prTNR10(28,ana,20,200);
 	prTNR10(11,ausn,20,150);
 	prTNR10(22,pra,800,200);
@@ -102,6 +150,13 @@ void display()
 	glFlush();
 }
 
+void myReshape(int w, int h)
+{
+	if(w>=h)
+		glViewport(0,0,(GLsizei)h, (GLsizei)h);
+	else
+		glViewport(0,0,(GLsizei)w, (GLsizei)w);
+}
 void menu(int choice)
 {
 	switch(choice)
@@ -141,6 +196,7 @@ void main(int argc, char **argv)
 	glutInitWindowPosition(0,0);
 	glutCreateWindow("Free Fall");
 	myinit();
+	glutReshapeFunc(myReshape);
 	glutDisplayFunc(display);
 	glutMainLoop();
 }
