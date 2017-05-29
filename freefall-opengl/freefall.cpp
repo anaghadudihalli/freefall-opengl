@@ -8,7 +8,7 @@
 /* -- Variable declarations -- */
 int ch=1;   // Choice for the menu
 int w=600, h=600;   //Width and height of the window
-
+int pressed;
 
 /* -- Function declarations -- */
 void brick();   // Displaying Brick
@@ -20,6 +20,7 @@ void display();
 void myReshape(int w, int h);
 void menu(int choice);
 void myinit();
+void mykey(unsigned char key, int x, int y); 
 
 
 
@@ -59,6 +60,9 @@ void brick() {
 		glVertex2f(300,750);
 	glEnd();
 	glEndList();
+
+	if(pressed == 1) {
+	}
 	glFlush();
 }
 
@@ -147,6 +151,9 @@ void feather() {
 
 	glEnd();
 	glEndList();
+
+	
+
 	glFlush();
 }
 
@@ -172,6 +179,8 @@ void prTNR10(int n,char s[],int x,int y) {
 
 
 void display() {
+	char press[17]="Press S to start";
+	
 	if(ch==1) {
 		glClear(GL_COLOR_BUFFER_BIT);
 		char free[24]="FREE FALL DEMONSTRATION";
@@ -227,13 +236,21 @@ void display() {
 
 	if(ch==3) {
 		glClear(GL_COLOR_BUFFER_BIT);
+		prTNR24(17,press,400,900);
 		brick();
 		ground();
 		feather();
+		if(pressed == 1)
+	{
+		char l4[14]="Is this true?";
+		prTNR10(14,l4,100,625);
+	}
+		glFlush();
 	}
 
 	if(ch==4) {
 		glClear(GL_COLOR_BUFFER_BIT);
+		prTNR24(17,press,400,900);
 		brick();
 		ground();
 		feather();
@@ -242,11 +259,22 @@ void display() {
 }
 
 
+
+
 void myReshape(int w, int h) {
 	if(w>=h)
 		glViewport(0,0,(GLsizei)h, (GLsizei)h);
 	else
 		glViewport(0,0,(GLsizei)w, (GLsizei)w);
+}
+
+
+//Keyboard function
+void mykey(unsigned char key, int x, int y)
+{
+	if(key == 's' || key == 'S') 
+		pressed = 1;
+	display();
 }
 
 
@@ -294,9 +322,11 @@ void main(int argc, char **argv) {
 	glutInitDisplayMode(GLUT_SINGLE|GLUT_RGB);
 	glutInitWindowSize(w,h);
 	glutInitWindowPosition(0,0);
-	glutCreateWindow("Free Fall");
+	glutCreateWindow("Free Fall Demonstration");
 	myinit();
 	glutReshapeFunc(myReshape);
+	
 	glutDisplayFunc(display);
+	glutKeyboardFunc(mykey);
 	glutMainLoop();
 }

@@ -1,4 +1,4 @@
-﻿Build started 29/05/2017 11:43:51 AM.
+﻿Build started 29/05/2017 12:13:11 PM.
      1>Project "C:\Users\SYS\Desktop\freefall-opengl\freefall-opengl\freefall-opengl.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "Debug\freefall-opengl.unsuccessfulbuild" because "AlwaysCreate" was specified.
@@ -18,4 +18,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:02.50
+Time Elapsed 00:00:00.59
