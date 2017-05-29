@@ -2,18 +2,7 @@
 The concept of free fall demonstrated using OpenGL
 
 # License
+[wtfpl]: https://github.com/anaghadudihalli/freefall-opengl/blob/master/license.png "Do What the Fuck You Want To Public License"
 
-        DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE 
-                    Version 2, December 2004 
-
- Copyright (C) 2017 Anagha Dudihalli Pranathi Bonagiri 
-
- Everyone is permitted to copy and distribute verbatim or modified 
- copies of this license document, and changing it is allowed as long 
- as the name is changed. 
-
-            DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE 
-   TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION 
-
-  0. You just DO WHAT THE FUCK YOU WANT TO.
+This project is released under the [WTFPL](http://www.wtfpl.net/txt/copying/) (Do **W**hat **T**he **F**uck You Want To **P**ublic **L**icense)
 
