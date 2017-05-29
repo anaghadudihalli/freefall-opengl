@@ -26,7 +26,7 @@ void mykey(unsigned char key, int x, int y);
 
 // Displaying brick
 void brick() {	
-    
+            glPushMatrix();
 	glNewList(BRICK,GL_COMPILE_AND_EXECUTE);
 	glColor3f(0.501,0.18,0.121); // Brick color
 	glBegin(GL_POLYGON);   // Front face
@@ -60,7 +60,7 @@ void brick() {
 		glVertex2f(300,750);
 	glEnd();
 	glEndList();
-
+	  glPopMatrix();
 	if(pressed == 1) {
 	}
 	glFlush();
@@ -240,10 +240,20 @@ void display() {
 		brick();
 		ground();
 		feather();
+		glColor3f(1.0,1.0,1.0);
 		if(pressed == 1)
 	{
-		char l4[14]="Is this true?";
-		prTNR10(14,l4,100,625);
+		  glPushMatrix();
+		  glTranslatef(-5.0,-36.5,0.0);
+		  glColor3f(1.0,1.0,1.0);
+		  brick();
+		  glPopMatrix();
+		  glPushMatrix();
+		  glTranslatef(41.0,-71,0.0);
+		  glCallList(BRICK);
+		  glPopMatrix();
+		  glPushMatrix();
+
 	}
 		glFlush();
 	}
