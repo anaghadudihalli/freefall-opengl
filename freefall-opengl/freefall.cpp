@@ -2,6 +2,8 @@
 #include<stdlib.h>
 #include<GL/glut.h>
 #include<math.h>
+#define BRICK 1
+#define FEATHER 2
 
 /* -- Variable declarations -- */
 int ch=1;   // Choice for the menu
@@ -23,7 +25,9 @@ void myinit();
 
 // Displaying brick
 void brick() {	
-    glColor3f(0.501,0.18,0.121); // Brick color
+    
+	glNewList(BRICK,GL_COMPILE_AND_EXECUTE);
+	glColor3f(0.501,0.18,0.121); // Brick color
 	glBegin(GL_POLYGON);   // Front face
 		glVertex2f(200,750);
 		glVertex2f(200,800);
@@ -54,6 +58,7 @@ void brick() {
 		glVertex2f(300,800);
 		glVertex2f(300,750);
 	glEnd();
+	glEndList();
 	glFlush();
 }
 
@@ -70,9 +75,8 @@ void ground() {	// displaying ground
 
 // Displaying feather
 void feather() {	
-	//glColor3f(0.176,0.43,0.21);	//Leaf
+	glNewList(FEATHER, GL_COMPILE_AND_EXECUTE);
 	glColor3f(0.52,0.53,0.54);	//Feather
-		
 	glBegin(GL_LINES);  // feather shaft
 		 glVertex2f(600,750);
 		 glVertex2f(605,758);
@@ -111,12 +115,10 @@ void feather() {
 		 glVertex2f(616,771);
 		 glVertex2f(636,775.5);
 	 
-	 
 		 glVertex2f(623,777); //4
 		 glVertex2f(625,787);
 		 glVertex2f(623,777);
 		 glVertex2f(643,784);
-
 
 		 glVertex2f(629,782); //5
 		 glVertex2f(631,794);
@@ -144,6 +146,7 @@ void feather() {
 		 glVertex2f(666,805);
 
 	glEnd();
+	glEndList();
 	glFlush();
 }
 
@@ -193,6 +196,7 @@ void display() {
 		glClear(GL_COLOR_BUFFER_BIT);
 		
 		char intro[13]="INTRODUCTION";
+		glColor3f(1.0,1.0,1.0);
 		prTNR24(13,intro,800,840);
 		
 		char l1[138]="In fourth-century BC Greece the philosopher Aristotle theorized that the speed at which an object falls is probably relative to its mass.";
