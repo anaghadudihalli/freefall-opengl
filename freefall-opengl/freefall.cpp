@@ -1,9 +1,10 @@
-#include<stdio.h>
+#include<iostream>
 #include<stdlib.h>
 #include<GL/glut.h>
 #include<math.h>
-#define BRICK 1
-#define FEATHER 2
+#include<dos.h>
+
+using namespace std;
 
 /* -- Variable declarations -- */
 int ch=1;   // Choice for the menu
@@ -11,9 +12,9 @@ int w=600, h=600;   //Width and height of the window
 int pressed;
 
 /* -- Function declarations -- */
-void brick();   // Displaying Brick
+void brick(int);   // Displaying Brick
 void ground();   // Displaying ground
-void feather();  // Displaying feather
+void feather(int);  // Displaying feather
 void prTNR24(int n,char s[],int x,int y);   // Displaying text in Times new roman 24 size
 void prTNR10(int n,char s[],int x,int y);	// Displaying text in Times new roman 10 size
 void display();
@@ -21,53 +22,50 @@ void myReshape(int w, int h);
 void menu(int choice);
 void myinit();
 void mykey(unsigned char key, int x, int y); 
+void moveinvac();
+//void movefeather();
 
 
 
 // Displaying brick
-void brick() {	
-    
-	glNewList(BRICK,GL_COMPILE_AND_EXECUTE);
+void brick(int y=0) {	
 	glColor3f(0.501,0.18,0.121); // Brick color
 	glBegin(GL_POLYGON);   // Front face
-		glVertex2f(200,750);
-		glVertex2f(200,800);
-		glVertex2f(300,800);
-		glVertex2f(300,750);
+		glVertex2f(200,750-y);
+		glVertex2f(200,800-y);
+		glVertex2f(300,800-y);
+		glVertex2f(300,750-y);
 	glEnd();
 	
 	glBegin(GL_POLYGON);	// Top face
-		glVertex2f(200,800);
-		glVertex2f(233.3,825);
-		glVertex2f(333.3,825);
-		glVertex2f(300,800);
+		glVertex2f(200,800-y);
+		glVertex2f(233.3,825-y);
+		glVertex2f(333.3,825-y);
+		glVertex2f(300,800-y);
 	glEnd();
 
 	glBegin(GL_POLYGON);	// Side face
-		glVertex2f(300,800);
-		glVertex2f(333.3,825);
-		glVertex2f(333.3,775);
-		glVertex2f(300,750);
+		glVertex2f(300,800-y);
+		glVertex2f(333.3,825-y);
+		glVertex2f(333.3,775-y);
+		glVertex2f(300,750-y);
 	glEnd();
 
-	glColor3f(0.0,0.0,0.0);
+	glColor3f(0.0,0.0,0.0);   // Outline color
 	glBegin(GL_LINES);	// Brick outline
-		glVertex2f(200,800);
-		glVertex2f(300,800);
-		glVertex2f(300,800);
-		glVertex2f(333.3,825);
-		glVertex2f(300,800);
-		glVertex2f(300,750);
+		glVertex2f(200,800-y);
+		glVertex2f(300,800-y);
+		glVertex2f(300,800-y);
+		glVertex2f(333.3,825-y);
+		glVertex2f(300,800-y);
+		glVertex2f(300,750-y);
 	glEnd();
-	glEndList();
-	  glPopMatrix();
-	if(pressed == 1) {
-	}
 	glFlush();
 }
 
 
-void ground() {	// displaying ground
+// displaying ground
+void ground() {
 	glColor3f(0.0,1.0,0.0);
 	glBegin(GL_LINES);
 		glVertex2f(100,190);
@@ -78,82 +76,77 @@ void ground() {	// displaying ground
 
 
 // Displaying feather
-void feather() {	
-	glNewList(FEATHER, GL_COMPILE_AND_EXECUTE);
+void feather(int y=0) {	
 	glColor3f(0.52,0.53,0.54);	//Feather
 	glBegin(GL_LINES);  // feather shaft
-		 glVertex2f(600,750);
-		 glVertex2f(605,758);
-		 glVertex2f(605,758);
-		 glVertex2f(610,765);
-		 glVertex2f(610,765);
-		 glVertex2f(616,771);
-		 glVertex2f(616,771);
-		 glVertex2f(623,777);
-		 glVertex2f(623,777);
-		 glVertex2f(629,782);
-		 glVertex2f(629,782);
-		 glVertex2f(635,787);
-		 glVertex2f(635,787);
-		 glVertex2f(643,792);
-		 glVertex2f(643,792);
-		 glVertex2f(649,796);
-		 glVertex2f(649,796);
-		 glVertex2f(656,799);
-		 glVertex2f(656,799); 
-		 glVertex2f(664,802.5);
+		 glVertex2f(600,750-y);
+		 glVertex2f(605,758-y);
+		 glVertex2f(605,758-y);
+		 glVertex2f(610,765-y);
+		 glVertex2f(610,765-y);
+		 glVertex2f(616,771-y);
+		 glVertex2f(616,771-y);
+		 glVertex2f(623,777-y);
+		 glVertex2f(623,777-y);
+		 glVertex2f(629,782-y);
+		 glVertex2f(629,782-y);
+		 glVertex2f(635,787-y);
+		 glVertex2f(635,787-y);
+		 glVertex2f(643,792-y);
+		 glVertex2f(643,792-y);
+		 glVertex2f(649,796-y);
+		 glVertex2f(649,796-y);
+		 glVertex2f(656,799-y);
+		 glVertex2f(656,799-y); 
+		 glVertex2f(664,802.5-y);
 
 		  
-		 glVertex2f(605,758); //1
-		 glVertex2f(603,768);
-		 glVertex2f(605,758);
-		 glVertex2f(621,762);
+		 glVertex2f(605,758-y); //1
+		 glVertex2f(603,768-y);
+		 glVertex2f(605,758-y);
+		 glVertex2f(621,762-y);
 	 
-		 glVertex2f(610,765); //2
-		 glVertex2f(611,775);
-		 glVertex2f(610,765);
-		 glVertex2f(629,768);
+		 glVertex2f(610,765-y); //2
+		 glVertex2f(611,775-y);
+		 glVertex2f(610,765-y);
+		 glVertex2f(629,768-y);
 
-		 glVertex2f(616,771); //3
-		 glVertex2f(617,782.5);
-		 glVertex2f(616,771);
-		 glVertex2f(636,775.5);
+		 glVertex2f(616,771-y); //3
+		 glVertex2f(617,782.5-y);
+		 glVertex2f(616,771-y);
+		 glVertex2f(636,775.5-y);
 	 
-		 glVertex2f(623,777); //4
-		 glVertex2f(625,787);
-		 glVertex2f(623,777);
-		 glVertex2f(643,784);
+		 glVertex2f(623,777-y); //4
+		 glVertex2f(625,787-y);
+		 glVertex2f(623,777-y);
+		 glVertex2f(643,784-y);
 
-		 glVertex2f(629,782); //5
-		 glVertex2f(631,794);
-		 glVertex2f(629,782);
-		 glVertex2f(643,787);
+		 glVertex2f(629,782-y); //5
+		 glVertex2f(631,794-y);
+		 glVertex2f(629,782-y);
+		 glVertex2f(643,787-y);
 
-		 glVertex2f(635,787); //6
-		 glVertex2f(639,795.5);
-		 glVertex2f(635,787);
-		 glVertex2f(649,794);
+		 glVertex2f(635,787-y); //6
+		 glVertex2f(639,795.5-y);
+		 glVertex2f(635,787-y);
+		 glVertex2f(649,794-y);
 
-		 glVertex2f(643,792); //7
-		 glVertex2f(647,801);
-		 glVertex2f(643,792);
-		 glVertex2f(656,794);
+		 glVertex2f(643,792-y); //7
+		 glVertex2f(647,801-y);
+		 glVertex2f(643,792-y);
+		 glVertex2f(656,794-y);
 
-		 glVertex2f(649,796); //8
-		 glVertex2f(655,805);
-		 glVertex2f(649,796);
-		 glVertex2f(663,798);
+		 glVertex2f(649,796-y); //8
+		 glVertex2f(655,805-y);
+		 glVertex2f(649,796-y);
+		 glVertex2f(663,798-y);
 	 
-		 glVertex2f(656,799); //9
-		 glVertex2f(663,806);
-		 glVertex2f(656,799);
-		 glVertex2f(666,805);
+		 glVertex2f(656,799-y); //9
+		 glVertex2f(663,806-y);
+		 glVertex2f(656,799-y);
+		 glVertex2f(666,805-y);
 
 	glEnd();
-	glEndList();
-
-	
-
 	glFlush();
 }
 
@@ -177,6 +170,20 @@ void prTNR10(int n,char s[],int x,int y) {
 	for(k=0;k<n;k++)
 	glutBitmapCharacter(GLUT_BITMAP_9_BY_15,s[k]);
 	glColor3f(1,1,1);
+}
+
+
+//Move the brick
+void moveinvac() {
+	int i;
+
+	for(i=0; i<192; i+=30) {
+		glClear(GL_COLOR_BUFFER_BIT);
+		brick(i);
+		feather(i);
+		ground();
+		delay(1000);
+	}
 }
 
 
@@ -255,40 +262,9 @@ void display() {
 		brick();
 		ground();
 		feather();
-		glColor3f(1.0,1.0,1.0);
 		if(pressed == 1) {
-		   /* for(y=825;y>633;y-=10)
-			{
-				glPushMatrix();
-				glTranslatef(0,y,0);
-				glCallList(BRICK);
-				glCallList(FEATHER);
-				glPopMatrix();
-			}
-			glFlush();*/
-
-			//for(i=0;i<5;i++) {
-		 glClear(GL_COLOR_BUFFER_BIT);
-			glPushMatrix();
-			glTranslatef(0,-558,0);
-			glCallList(BRICK);              
-			glCallList(FEATHER);
-			glPopMatrix();
-			ground();
-			prTNR24(10,vac, 380,930);
-		
-			
-			/*for(i=825;i<633;i--)
-			{   
-				glPushMatrix();
-				glTranslatef(0,y+i,0);
-				glCallList(BRICK);
-				glCallList(FEATHER);
-				glClear(GL_COLOR_BUFFER_BIT);
-				glPopMatrix();
-				glClear(GL_COLOR_BUFFER_BIT);
-			}
-			glFlush();*/
+		   //moveinair(1);
+		   moveinvac();
 		}
 	glFlush();
 }
