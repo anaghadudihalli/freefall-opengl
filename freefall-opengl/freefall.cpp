@@ -2,7 +2,6 @@
 #include<stdlib.h>
 #include<GL/glut.h>
 #include<math.h>
-#include<dos.h>
 
 using namespace std;
 
@@ -29,8 +28,10 @@ void moveinvac();
 
 // Displaying brick
 void brick(int y=0) {	
-	glColor3f(0.501,0.18,0.121); // Brick color
-	glBegin(GL_POLYGON);   // Front face
+	if(y<=560)
+	{
+	  glColor3f(0.501,0.18,0.121); // Brick color
+	  glBegin(GL_POLYGON);   // Front face
 		glVertex2f(200,750-y);
 		glVertex2f(200,800-y);
 		glVertex2f(300,800-y);
@@ -61,6 +62,9 @@ void brick(int y=0) {
 		glVertex2f(300,750-y);
 	glEnd();
 	glFlush();
+ }
+	else
+		brick(560);
 }
 
 
@@ -176,14 +180,30 @@ void prTNR10(int n,char s[],int x,int y) {
 //Move the brick
 void moveinvac() {
 	int i;
-
-	for(i=0; i<192; i+=30) {
+	char vac[10]="In Vacuum";
+	for(i=0; i<570; i+=20) {
 		glClear(GL_COLOR_BUFFER_BIT);
 		brick(i);
 		feather(i);
+		prTNR24(10,vac,380,930);
 		ground();
-		delay(1000);
+		_sleep(100);
 	}
+}
+
+void moveinair() {
+	int i,j;
+	char air[20]="With Air Resistance";
+	for(i=0, j=0; i<500, j<570; i+=20, j+=10) {
+				glClear(GL_COLOR_BUFFER_BIT);
+				brick(i);
+				feather(j);
+				prTNR24(20,air,380,930);
+				ground();
+				_sleep(100);
+		    }  
+		
+
 }
 
 
@@ -245,12 +265,19 @@ void display() {
 	}
 
 	if(ch==3) {
+		int i, y=825;
+		char air[20]="With Air Resistance";
 		glClear(GL_COLOR_BUFFER_BIT);
-		prTNR24(17,press,320,900);
+		prTNR24(20,air,380,930);
+		prTNR10(17,press,360,880);
 		brick();
 		ground();
 		feather();
+        if(pressed == 1) {
+		   moveinair();
+		}
 		glFlush();
+		
 	}
 
 	if(ch==4) {
@@ -263,7 +290,6 @@ void display() {
 		ground();
 		feather();
 		if(pressed == 1) {
-		   //moveinair(1);
 		   moveinvac();
 		}
 	glFlush();
