@@ -11,7 +11,7 @@ This project was done in Visual Studio 2010. To run it :
 #### Linux
 You will need to make few changes in order to run it on Linux.
 To begin with:
-1. Find the cpp file(freefall.cpp) in freefall-opengl/freefall-opengl.
+1. Find the cpp file(freefall.cpp) in *freefall-opengl/freefall-opengl*.
 2. **_sleep()** is a Windows function. To make it work in Linux replace **_sleep(100)** function on lines 248 and 263 with **sleep(1)** or any appropriate delay.
 3. Include **unistd.h** header file
 4. If it gives an "*should return int*" error in main, return an int changing the return type of the main accordingly.
