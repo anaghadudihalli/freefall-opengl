@@ -26,7 +26,7 @@ void mykey(unsigned char key, int x, int y);
 
 // Displaying brick
 void brick() {	
-            glPushMatrix();
+    
 	glNewList(BRICK,GL_COMPILE_AND_EXECUTE);
 	glColor3f(0.501,0.18,0.121); // Brick color
 	glBegin(GL_POLYGON);   // Front face
@@ -161,6 +161,7 @@ void feather() {
 // Displaying text in Times New Roman 24 size
 void prTNR24(int n,char s[],int x,int y) {	
 	int k;
+	glColor3f(1.0,1.0,1.0);
 	glRasterPos2i(x,y);
 	for(k=0;k<n;k++)
 	glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,s[k]);
@@ -171,6 +172,7 @@ void prTNR24(int n,char s[],int x,int y) {
 // Displaying text in Times New Roman 10 size
 void prTNR10(int n,char s[],int x,int y) {	
 	int k;
+	glColor3f(1.0,1.0,1.0);
 	glRasterPos2i(x,y);
 	for(k=0;k<n;k++)
 	glutBitmapCharacter(GLUT_BITMAP_9_BY_15,s[k]);
@@ -199,6 +201,7 @@ void display() {
 		prTNR10(11,ausn,20,150);
 		prTNR10(22,pra,800,200);
 		prTNR10(11,pusn,800,150);
+		glFlush();
 	}
 
 	if(ch==2) {
@@ -236,36 +239,59 @@ void display() {
 
 	if(ch==3) {
 		glClear(GL_COLOR_BUFFER_BIT);
-		prTNR24(17,press,400,900);
+		prTNR24(17,press,320,900);
 		brick();
 		ground();
 		feather();
-		glColor3f(1.0,1.0,1.0);
-		if(pressed == 1)
-	{
-		  glPushMatrix();
-		  glTranslatef(-5.0,-36.5,0.0);
-		  glColor3f(1.0,1.0,1.0);
-		  brick();
-		  glPopMatrix();
-		  glPushMatrix();
-		  glTranslatef(41.0,-71,0.0);
-		  glCallList(BRICK);
-		  glPopMatrix();
-		  glPushMatrix();
-
-	}
 		glFlush();
 	}
 
 	if(ch==4) {
+		int  i,y=825;
+		char vac[10]="In Vacuum";
 		glClear(GL_COLOR_BUFFER_BIT);
-		prTNR24(17,press,400,900);
+		prTNR24(10,vac,380,930);
+		prTNR10(17,press,360,880);
 		brick();
 		ground();
 		feather();
-	}
+		glColor3f(1.0,1.0,1.0);
+		if(pressed == 1) {
+		   /* for(y=825;y>633;y-=10)
+			{
+				glPushMatrix();
+				glTranslatef(0,y,0);
+				glCallList(BRICK);
+				glCallList(FEATHER);
+				glPopMatrix();
+			}
+			glFlush();*/
+
+			//for(i=0;i<5;i++) {
+		 glClear(GL_COLOR_BUFFER_BIT);
+			glPushMatrix();
+			glTranslatef(0,-558,0);
+			glCallList(BRICK);              
+			glCallList(FEATHER);
+			glPopMatrix();
+			ground();
+			prTNR24(10,vac, 380,930);
+		
+			
+			/*for(i=825;i<633;i--)
+			{   
+				glPushMatrix();
+				glTranslatef(0,y+i,0);
+				glCallList(BRICK);
+				glCallList(FEATHER);
+				glClear(GL_COLOR_BUFFER_BIT);
+				glPopMatrix();
+				glClear(GL_COLOR_BUFFER_BIT);
+			}
+			glFlush();*/
+		}
 	glFlush();
+}
 }
 
 
