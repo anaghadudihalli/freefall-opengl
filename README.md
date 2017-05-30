@@ -4,11 +4,11 @@ The concept of free fall demonstrated using OpenGL.
 
 ## Compiling and Execution
 
-### Windows
+#### Windows
 This project was done in Visual Studio 2010. To run it :
  + Run the freefall-opengl.sln file.
  
-### Linux
+#### Linux
 You will need to make few changes in order to run it in Linux.
 To begin with:
 1. *_sleep()* is a Windows function. To make it work in Linux replace *_sleep(100)* function on lines 248 and 263 with *sleep(1)* or any appropriate delay.
@@ -17,9 +17,9 @@ To begin with:
 4. Install freeglut.
 5. To compile:
 
-##### Ubuntu
+###### Ubuntu
     c++ freefall.cpp -lGL -lGLU -lglut
-##### Arch Linux
+###### Arch Linux
     c++ -lglut -lGLU -lGL freefall.cpp
 
 
