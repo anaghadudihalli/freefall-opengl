@@ -327,7 +327,7 @@ void display() {
 		char air[20]="With Air Resistance";
 		glClear(GL_COLOR_BUFFER_BIT);
 		prTNR24(20,air,310,930);
-		prTNR10(17,press,350,880);
+		prTNR10(17,press,360,880);
 		brick();
 		ground();
 		feather();
