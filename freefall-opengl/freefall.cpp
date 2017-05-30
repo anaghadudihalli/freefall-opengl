@@ -10,6 +10,7 @@ int ch=1;   // Choice for the menu
 int w=600, h=600;   //Width and height of the window
 int pressed;
 
+
 /* -- Function declarations -- */
 void brick(int);   // Displaying Brick
 void ground();   // Displaying ground
@@ -19,17 +20,16 @@ void prTNR10(int n,char s[],int x,int y);	// Displaying text in Times new roman 
 void display();
 void myReshape(int w, int h);
 void menu(int choice);
-void myinit();
-void mykey(unsigned char key, int x, int y); 
-void moveinvac();
-//void movefeather();
+void myInit();
+void myKey(unsigned char key, int x, int y); 
+void moveInVac();	// Move the objects in Vacuum
+void moveInAir();	// Move the objects with Air Resistance
 
 
 
 // Displaying brick
 void brick(int y=0) {	
-	if(y<=560)
-	{
+	if(y<=560) {
 	  glColor3f(0.501,0.18,0.121); // Brick color
 	  glBegin(GL_POLYGON);   // Front face
 		glVertex2f(200,750-y);
@@ -52,7 +52,7 @@ void brick(int y=0) {
 		glVertex2f(300,750-y);
 	glEnd();
 
-	glColor3f(0.0,0.0,0.0);   // Outline color
+	glColor3f(0.0,0.0,0.0);   // Brick Outline color
 	glBegin(GL_LINES);	// Brick outline
 		glVertex2f(200,800-y);
 		glVertex2f(300,800-y);
@@ -68,12 +68,70 @@ void brick(int y=0) {
 }
 
 
-// displaying ground
+// Displaying ground
 void ground() {
 	glColor3f(0.0,1.0,0.0);
 	glBegin(GL_LINES);
-		glVertex2f(100,190);
+		glVertex2f(80,190);     
 		glVertex2f(810,190);
+
+		glColor3f(0,0.321,0.129);
+
+		glVertex2f(100,190);	// #1 Grass
+		glVertex2f(80,215);
+		glVertex2f(100,190);
+		glVertex2f(100,215);
+		glVertex2f(100,190);
+		glVertex2f(120,215);
+
+		glVertex2f(200,190);	// 2# Grass	
+		glVertex2f(180,215);
+		glVertex2f(200,190);
+		glVertex2f(200,215);
+		glVertex2f(200,190);
+		glVertex2f(220,215);
+
+		glVertex2f(300,190);	// 3# Grass
+		glVertex2f(280,215);
+		glVertex2f(300,190);
+		glVertex2f(300,215);
+		glVertex2f(300,190);
+		glVertex2f(320,215);
+
+		glVertex2f(400,190);	// 4# Grass
+		glVertex2f(380,215);
+		glVertex2f(400,190);
+		glVertex2f(400,215);
+		glVertex2f(400,190);
+		glVertex2f(420,215);
+
+		glVertex2f(500,190);	// 5# Grass
+		glVertex2f(480,215);
+		glVertex2f(500,190);
+		glVertex2f(500,215);
+		glVertex2f(500,190);
+		glVertex2f(520,215);
+
+		glVertex2f(600,190);	// 6# Grass
+		glVertex2f(580,215);
+		glVertex2f(600,190);
+		glVertex2f(600,215);
+		glVertex2f(600,190);
+		glVertex2f(620,215);
+
+		glVertex2f(700,190);	// 7# Grass
+		glVertex2f(680,215);
+		glVertex2f(700,190);
+		glVertex2f(700,215);
+		glVertex2f(700,190);
+		glVertex2f(720,215);
+
+		glVertex2f(800,190);	// 8# Grass
+		glVertex2f(780,215);
+		glVertex2f(800,190);
+		glVertex2f(800,215);
+		glVertex2f(800,190);
+		glVertex2f(820,215);
 	glEnd();
 	glFlush();
 } 
@@ -81,8 +139,8 @@ void ground() {
 
 // Displaying feather
 void feather(int y=0) {	
-	glColor3f(0.52,0.53,0.54);	//Feather
-	glBegin(GL_LINES);  // feather shaft
+	glColor3f(0.52,0.53,0.54);	// Feather
+	glBegin(GL_LINES);  // Feather shaft
 		 glVertex2f(600,750-y);
 		 glVertex2f(605,758-y);
 		 glVertex2f(605,758-y);
@@ -105,47 +163,47 @@ void feather(int y=0) {
 		 glVertex2f(664,802.5-y);
 
 		  
-		 glVertex2f(605,758-y); //1
+		 glVertex2f(605,758-y); // #1
 		 glVertex2f(603,768-y);
 		 glVertex2f(605,758-y);
 		 glVertex2f(621,762-y);
 	 
-		 glVertex2f(610,765-y); //2
+		 glVertex2f(610,765-y); // #2
 		 glVertex2f(611,775-y);
 		 glVertex2f(610,765-y);
 		 glVertex2f(629,768-y);
 
-		 glVertex2f(616,771-y); //3
+		 glVertex2f(616,771-y); // #3
 		 glVertex2f(617,782.5-y);
 		 glVertex2f(616,771-y);
 		 glVertex2f(636,775.5-y);
 	 
-		 glVertex2f(623,777-y); //4
+		 glVertex2f(623,777-y); // #4
 		 glVertex2f(625,787-y);
 		 glVertex2f(623,777-y);
 		 glVertex2f(643,784-y);
 
-		 glVertex2f(629,782-y); //5
+		 glVertex2f(629,782-y); // #5
 		 glVertex2f(631,794-y);
 		 glVertex2f(629,782-y);
 		 glVertex2f(643,787-y);
 
-		 glVertex2f(635,787-y); //6
+		 glVertex2f(635,787-y); // #6
 		 glVertex2f(639,795.5-y);
 		 glVertex2f(635,787-y);
 		 glVertex2f(649,794-y);
 
-		 glVertex2f(643,792-y); //7
+		 glVertex2f(643,792-y); // #7
 		 glVertex2f(647,801-y);
 		 glVertex2f(643,792-y);
 		 glVertex2f(656,794-y);
 
-		 glVertex2f(649,796-y); //8
+		 glVertex2f(649,796-y); // #8
 		 glVertex2f(655,805-y);
 		 glVertex2f(649,796-y);
 		 glVertex2f(663,798-y);
 	 
-		 glVertex2f(656,799-y); //9
+		 glVertex2f(656,799-y); // #9
 		 glVertex2f(663,806-y);
 		 glVertex2f(656,799-y);
 		 glVertex2f(666,805-y);
@@ -177,8 +235,8 @@ void prTNR10(int n,char s[],int x,int y) {
 }
 
 
-//Move the brick
-void moveinvac() {
+//Move the objects in Vacuum
+void moveInVac() {
 	int i;
 	char vac[10]="In Vacuum";
 	for(i=0; i<570; i+=20) {
@@ -191,25 +249,24 @@ void moveinvac() {
 	}
 }
 
-void moveinair() {
+
+// Move the objects with Air Resistance
+void moveInAir() {
 	int i,j;
 	char air[20]="With Air Resistance";
 	for(i=0, j=0; i<500, j<570; i+=20, j+=10) {
 				glClear(GL_COLOR_BUFFER_BIT);
 				brick(i);
 				feather(j);
-				prTNR24(20,air,380,930);
+				prTNR24(20,air,310,930);
 				ground();
 				_sleep(100);
 		    }  
-		
-
 }
 
 
 void display() {
 	char press[17]="Press S to start";
-	
 	if(ch==1) {
 		glClear(GL_COLOR_BUFFER_BIT);
 		char free[24]="FREE FALL DEMONSTRATION";
@@ -231,6 +288,7 @@ void display() {
 		glFlush();
 	}
 
+	else
 	if(ch==2) {
 		glClear(GL_COLOR_BUFFER_BIT);
 		
@@ -263,24 +321,23 @@ void display() {
 
 		glFlush();
 	}
-
+	else
 	if(ch==3) {
 		int i, y=825;
 		char air[20]="With Air Resistance";
 		glClear(GL_COLOR_BUFFER_BIT);
-		prTNR24(20,air,380,930);
-		prTNR10(17,press,360,880);
+		prTNR24(20,air,310,930);
+		prTNR10(17,press,350,880);
 		brick();
 		ground();
 		feather();
         if(pressed == 1) {
-		   moveinair();
+		   moveInAir();
 		}
 		glFlush();
 		
 	}
-
-	if(ch==4) {
+	else {
 		int  i,y=825;
 		char vac[10]="In Vacuum";
 		glClear(GL_COLOR_BUFFER_BIT);
@@ -290,13 +347,11 @@ void display() {
 		ground();
 		feather();
 		if(pressed == 1) {
-		   moveinvac();
+		   moveInVac();
 		}
 	glFlush();
 }
 }
-
-
 
 
 void myReshape(int w, int h) {
@@ -308,7 +363,7 @@ void myReshape(int w, int h) {
 
 
 //Keyboard function
-void mykey(unsigned char key, int x, int y)
+void myKey(unsigned char key, int x, int y)
 {
 	if(key == 's' || key == 'S') 
 		pressed = 1;
@@ -338,7 +393,7 @@ void menu(int choice) {
 }
 
 
-void myinit() {
+void myInit() {
 	glutCreateMenu(menu);
 	glutAddMenuEntry("Start Screen",1);
 	glutAddMenuEntry("Introduction",2);
@@ -361,10 +416,9 @@ void main(int argc, char **argv) {
 	glutInitWindowSize(w,h);
 	glutInitWindowPosition(0,0);
 	glutCreateWindow("Free Fall Demonstration");
-	myinit();
+	myInit();
 	glutReshapeFunc(myReshape);
-	
 	glutDisplayFunc(display);
-	glutKeyboardFunc(mykey);
+	glutKeyboardFunc(myKey);
 	glutMainLoop();
 }
