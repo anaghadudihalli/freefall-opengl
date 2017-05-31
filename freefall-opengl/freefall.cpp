@@ -396,8 +396,6 @@ void myInit() {
 	glutAddMenuEntry("Exit",5);
 	glutAttachMenu(GLUT_RIGHT_BUTTON);
 	glClearColor(0.0,0.0,0.0,0.0);
-    glColor3f(1.0,0.0,0.0);
-	glPointSize(1.0);
 	glLoadIdentity();
 	glMatrixMode(GL_PROJECTION);
 	gluOrtho2D(0.0,1000.0,0.0,1000.0);
