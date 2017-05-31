@@ -1,4 +1,4 @@
-﻿Build started 31/05/2017 1:34:57 PM.
+﻿Build started 31/05/2017 2:23:40 PM.
      1>Project "C:\Users\SYS\Desktop\freefall-opengl\freefall-opengl\freefall-opengl.vcxproj" on node 2 (build target(s)).
      1>InitializeBuildStatus:
          Creating "Debug\freefall-opengl.unsuccessfulbuild" because "AlwaysCreate" was specified.
@@ -9,8 +9,9 @@
                  c:\program files\microsoft visual studio 10.0\vc\include\stdlib.h(843) : see declaration of '_sleep'
      1>c:\users\sys\desktop\freefall-opengl\freefall-opengl\freefall.cpp(263): warning C4996: '_sleep': This function or variable has been superceded by newer library or operating system functionality. Consider using Sleep instead. See online help for details.
                  c:\program files\microsoft visual studio 10.0\vc\include\stdlib.h(843) : see declaration of '_sleep'
-     1>c:\users\sys\desktop\freefall-opengl\freefall-opengl\freefall.cpp(329): warning C4101: 'i' : unreferenced local variable
-     1>c:\users\sys\desktop\freefall-opengl\freefall-opengl\freefall.cpp(344): warning C4101: 'i' : unreferenced local variable
+     1>c:\users\sys\desktop\freefall-opengl\freefall-opengl\freefall.cpp(255): warning C4101: 'j' : unreferenced local variable
+     1>c:\users\sys\desktop\freefall-opengl\freefall-opengl\freefall.cpp(324): warning C4101: 'i' : unreferenced local variable
+     1>c:\users\sys\desktop\freefall-opengl\freefall-opengl\freefall.cpp(338): warning C4101: 'i' : unreferenced local variable
        Link:
          C:\Program Files\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\SYS\Desktop\freefall-opengl\Debug\freefall-opengl.exe" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\freefall-opengl.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\SYS\Desktop\freefall-opengl\Debug\freefall-opengl.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\SYS\Desktop\freefall-opengl\Debug\freefall-opengl.lib" /MACHINE:X86 Debug\freefall.obj
          LINK : C:\Users\SYS\Desktop\freefall-opengl\Debug\freefall-opengl.exe not found or not built by the last incremental link; performing full link
@@ -24,4 +25,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:05.17
+Time Elapsed 00:00:00.87

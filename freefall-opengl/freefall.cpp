@@ -17,13 +17,13 @@ void ground();   // Displaying ground
 void feather(int);  // Displaying feather
 void prTNR24(int n,char s[],int x,int y);   // Displaying text in Times new roman 24 size
 void prTNR10(int n,char s[],int x,int y);	// Displaying text in Times new roman 10 size
-void display();
-void myReshape(int w, int h);
-void menu(int choice);
-void myInit();
-void myKey(unsigned char key, int x, int y); 
 void moveInVac();	// Move the objects in Vacuum
 void moveInAir();	// Move the objects with Air Resistance
+void display();
+void myReshape(int w, int h);
+void myKey(unsigned char key, int x, int y); 
+void menu(int choice);
+void myInit();
 
 
 
@@ -207,7 +207,6 @@ void feather(int y = 0) {
 		 glVertex2f(663,806 - y);
 		 glVertex2f(656,799 - y);
 		 glVertex2f(666,805 - y);
-
 	glEnd();
 	glFlush();
 }
@@ -252,12 +251,12 @@ void moveInVac() {
 
 // Move the objects with Air Resistance
 void moveInAir() {
-	int i,j;
+	int i;
 	char air[20] = "With Air Resistance";
-	for(i = 0, j = 0; i < 500, j < 570; i += 20, j += 10) {
+	for(i = 0; i < 570; i += 10) {
 				glClear(GL_COLOR_BUFFER_BIT);
-				brick(i);
-				feather(j);
+				brick(2*i);
+				feather(i);
 				prTNR24(20,air,310,930);
 				ground();
 				_sleep(100);
@@ -412,9 +411,9 @@ void main(int argc, char **argv) {
 	glutInitWindowSize(w,h);
 	glutInitWindowPosition(0,0);
 	glutCreateWindow("Free Fall Demonstration");
-	myInit();
 	glutReshapeFunc(myReshape);
 	glutDisplayFunc(display);
 	glutKeyboardFunc(myKey);
+	myInit();
 	glutMainLoop();
 }
