@@ -276,15 +276,18 @@ void display() {
 		char ausn[11]="1JB14CS028";
 		char pra[22]="Bonagiri Sri Pranathi";
 		char pusn[11]="1JB14CS042";
+		char minst[31]="(Right click for more options)";
 
 		glColor3f(1.0,1.0,1.0);
 		prTNR24(24,free,340,900);
+		prTNR10(31,minst,380,850);
 		prTNR10(40,cg,400,600);
 		prTNR10(3,by,550,550);
 		prTNR10(28,ana,20,200);
 		prTNR10(11,ausn,20,150);
 		prTNR10(22,pra,800,200);
 		prTNR10(11,pusn,800,150);
+
 		glFlush();
 	}
 
