@@ -29,9 +29,9 @@ void myInit();
 
 // Displaying brick
 void brick(int y = 0) {	
-	if(y <= 560) {
-	  glColor3f(0.501,0.18,0.121); // Brick color
-	  glBegin(GL_POLYGON);   // Front face
+ if(y <= 560) {
+	glColor3f(0.501,0.18,0.121); // Brick color
+	glBegin(GL_POLYGON);   // Front face
 		glVertex2f(200,750 - y);
 		glVertex2f(200,800 - y);
 		glVertex2f(300,800 - y);
@@ -76,7 +76,6 @@ void ground() {
 		glVertex2f(810,190);
 
 		glColor3f(0,0.321,0.129);
-
 		glVertex2f(100,190);	// #1 Grass
 		glVertex2f(80,215);
 		glVertex2f(100,190);
