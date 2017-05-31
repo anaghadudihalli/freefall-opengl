@@ -254,13 +254,13 @@ void moveInAir() {
 	int i;
 	char air[20] = "With Air Resistance";
 	for(i = 0; i < 570; i += 10) {
-				glClear(GL_COLOR_BUFFER_BIT);
-				brick(2*i);
-				feather(i);
-				prTNR24(20,air,310,930);
-				ground();
-				_sleep(100);
-		    }  
+		glClear(GL_COLOR_BUFFER_BIT);
+		brick(2*i);
+		feather(i);
+		prTNR24(20,air,310,930);
+		ground();
+		_sleep(100);
+	}  
 }
 
 
