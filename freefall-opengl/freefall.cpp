@@ -290,7 +290,7 @@ void display() {
 	} else if(ch == 2) {
 		glClear(GL_COLOR_BUFFER_BIT);
 		
-		char intro[13]="INTRODUCTION";
+		char intro[13] = "INTRODUCTION";
 		glColor3f(1.0,1.0,1.0);
 		prTNR24(13,intro,800,840);
 		
@@ -333,7 +333,7 @@ void display() {
 		glFlush();
 		
 	} else {
-		int  i,y=825;
+		int  i,y = 825;
 		char vac[10]="In Vacuum";
 		glClear(GL_COLOR_BUFFER_BIT);
 		prTNR24(10,vac,380,930);
@@ -350,7 +350,7 @@ void display() {
 
 
 void myReshape(int w, int h) {
-	if(w>=h)
+	if(w >= h)
 		glViewport(0,0,(GLsizei)h, (GLsizei)h);
 	else
 		glViewport(0,0,(GLsizei)w, (GLsizei)w);
@@ -368,16 +368,16 @@ void myKey(unsigned char key, int x, int y) {
 void menu(int choice) {
 	switch(choice) {
 		case 1:
-			ch=1;
+			ch = 1;
 			break;
 		case 2: 
-			ch=2;
+			ch = 2;
 			break;
 		case 3:
-			ch=3;
+			ch = 3;
 			break;
 		case 4: 
-			ch=4;
+			ch = 4;
 			break;
 		case 5:
 			exit(0);
