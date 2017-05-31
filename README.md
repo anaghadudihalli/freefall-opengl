@@ -22,7 +22,8 @@ To begin with:
     c++ freefall.cpp -lGL -lGLU -lglut
 ###### Arch Linux
     c++ -lglut -lGLU -lGL freefall.cpp
-
+7. Run
+    ./a.out
 
 ## License
 ![WTFPL](https://github.com/anaghadudihalli/freefall-opengl/blob/master/license.png)
