@@ -327,7 +327,7 @@ void display() {
 		brick();
 		ground();
 		feather();
-        if(pressed == 1) {
+       		if(pressed == 1) {
 		   moveInAir();
 		}
 		glFlush();
@@ -350,7 +350,6 @@ void display() {
 
 
 void myReshape(int w, int h) {
-	
 	(w >= h) ? glViewport(0,0,(GLsizei)h, (GLsizei)h) : glViewport(0,0,(GLsizei)w, (GLsizei)w);
 }
 
