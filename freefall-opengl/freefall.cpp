@@ -15,8 +15,7 @@ int pressed;
 void brick(int);   // Displaying Brick
 void ground();   // Displaying ground
 void feather(int);  // Displaying feather
-void prTNR24(int n,char s[],int x,int y);   // Displaying text in Times new roman 24 size
-void prTNR10(int n,char s[],int x,int y);	// Displaying text in Times new roman 10 size
+void print(int size,int n,char s[],int x,int y);   // Displaying text
 void moveInVac();	// Move the objects in Vacuum
 void moveInAir();	// Move the objects with Air Resistance
 void display();
@@ -62,9 +61,8 @@ void brick(int y = 0) {
 		glVertex2f(300,750 - y);
 	glEnd();
 	glFlush();
- }
-	else
-		brick(560);
+ } else
+	brick(560);
 }
 
 
@@ -211,27 +209,21 @@ void feather(int y = 0) {
 }
 
 
-// Displaying text in Times New Roman 24 size
-void prTNR24(int n,char s[],int x,int y) {	
+// Displaying text
+void print(int size,int n,char s[],int x,int y) {	
 	int k;
 	glColor3f(1.0,1.0,1.0);
 	glRasterPos2i(x,y);
-	for(k = 0;k < n;k++)
-	glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,s[k]);
+	
+	if( size == 24) {            // Size - 24
+		for(k = 0;k < n;k++)
+		glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24,s[k]);
+	} else {                  // Size - 10
+		for(k = 0;k < n;k++)
+	        glutBitmapCharacter(GLUT_BITMAP_9_BY_15,s[k]);
+	}
 	glColor3f(1,1,1);
 }
-
-
-// Displaying text in Times New Roman 10 size
-void prTNR10(int n,char s[],int x,int y) {	
-	int k;
-	glColor3f(1.0,1.0,1.0);
-	glRasterPos2i(x,y);
-	for(k = 0;k < n;k++)
-	glutBitmapCharacter(GLUT_BITMAP_9_BY_15,s[k]);
-	glColor3f(1,1,1);
-}
-
 
 //Move the objects in Vacuum
 void moveInVac() {
@@ -241,7 +233,7 @@ void moveInVac() {
 		glClear(GL_COLOR_BUFFER_BIT);
 		brick(i);
 		feather(i);
-		prTNR24(10,vac,380,930);
+		print(24,10,vac,380,930);
 		ground();
 		_sleep(100);
 	}
@@ -256,7 +248,7 @@ void moveInAir() {
 		glClear(GL_COLOR_BUFFER_BIT);
 		brick(2*i);
 		feather(i);
-		prTNR24(20,air,310,930);
+		print(24,20,air,310,930);
 		ground();
 		_sleep(100);
 	}  
@@ -277,14 +269,14 @@ void display() {
 		char minst[31] = "(Right click for more options)";
 
 		glColor3f(1.0,1.0,1.0);
-		prTNR24(24,free,340,900);
-		prTNR10(31,minst,380,850);
-		prTNR10(40,cg,400,600);
-		prTNR10(3,by,550,550);
-		prTNR10(28,ana,20,200);
-		prTNR10(11,ausn,20,150);
-		prTNR10(22,pra,800,200);
-		prTNR10(11,pusn,800,150);
+		print(24,24,free,340,900);
+		print(10,31,minst,380,850);
+		print(10,40,cg,400,600);
+		print(10,3,by,550,550);
+		print(10,28,ana,20,200);
+		print(10,11,ausn,20,150);
+		print(10,22,pra,800,200);
+		print(10,11,pusn,800,150);
 
 		glFlush();
 	} else if(ch == 2) {
@@ -292,38 +284,38 @@ void display() {
 		
 		char intro[13] = "INTRODUCTION";
 		glColor3f(1.0,1.0,1.0);
-		prTNR24(13,intro,800,840);
+		print(24,13,intro,800,840);
 		
 		char l1[138] = "In fourth-century BC Greece the philosopher Aristotle theorized that the speed at which an object falls is probably relative to its mass.";
 		char l2[141] = "In other words, if two objects are the same size but one is heavier, the heavier one has greater density than the lighter object. Therefore,";
 		char l3[138] = "when both objects are dropped from the same height and at the same time, the heavier object should hit the ground before the lighter one.";
 		char l4[14] = "Is this true?";
-		prTNR10(138,l1,100,700);
-		prTNR10(141,l2,100,675);
-		prTNR10(138,l3,100,650);
-		prTNR10(14,l4,100,625);
+		print(10,138,l1,100,700);
+		print(10,141,l2,100,675);
+		print(10,138,l3,100,650);
+		print(10,14,l4,100,625);
 
 		char l5[139] = "Some 1,800 years later, in late 16th-century Italy, scientist and mathematician Galileo Galilei questioned Aristotle's theories of falling";
 		char l6[141] = "objects. Galileo performed an experiment from the top of the leaning tower of Pisa. He dropped two spheres of different weight and observed ";
 		char l7[43] = "that both hit the ground at the same time.";
-		prTNR10(139,l5,100,575);
-		prTNR10(141,l6,100,550);
-		prTNR10(43,l7,100,525);
+		print(10,139,l5,100,575);
+		print(10,141,l6,100,550);
+		print(10,43,l7,100,525);
 
 		char l8[141] = "Galileo reasoned that when an object falls more slowly, it is due to air resistance.  An object moving solely under the influence of gravity";
 		char l9[141] = "is said to be in free fall; near the surface of the Earth such an object falls at an acceleration of 9.8 metres per second squared. Hence in";
 		char l10[78] = "a vacuum, two objects of different mass will hit the ground at the same time.";
-		prTNR10(141,l8,100,475);
-		prTNR10(141,l9,100,450);
-		prTNR10(78,l10,100,425);
+		print(10,141,l8,100,475);
+		print(10,141,l9,100,450);
+		print(10,78,l10,100,425);
 
 		glFlush();
 	} else if (ch == 3) {
 		int i, y = 825;
 		char air[20] = "With Air Resistance";
 		glClear(GL_COLOR_BUFFER_BIT);
-		prTNR24(20,air,310,930);
-		prTNR10(17,press,360,880);
+		print(24,20,air,310,930);
+		print(10,17,press,360,880);
 		brick();
 		ground();
 		feather();
@@ -336,16 +328,16 @@ void display() {
 		int  i,y = 825;
 		char vac[10]="In Vacuum";
 		glClear(GL_COLOR_BUFFER_BIT);
-		prTNR24(10,vac,380,930);
-		prTNR10(17,press,360,880);
+		print(24,10,vac,380,930);
+		print(10,17,press,360,880);
 		brick();
 		ground();
 		feather();
 		if(pressed == 1) {
 		   moveInVac();
 		}
-	glFlush();
-}
+		glFlush();
+	}
 }
 
 
