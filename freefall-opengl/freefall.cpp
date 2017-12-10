@@ -350,10 +350,8 @@ void display() {
 
 
 void myReshape(int w, int h) {
-	if(w >= h)
-		glViewport(0,0,(GLsizei)h, (GLsizei)h);
-	else
-		glViewport(0,0,(GLsizei)w, (GLsizei)w);
+	
+	(w >= h) ? glViewport(0,0,(GLsizei)h, (GLsizei)h) : glViewport(0,0,(GLsizei)w, (GLsizei)w);
 }
 
 
